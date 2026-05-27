@@ -1,0 +1,18 @@
+# Template file for 'python3-hatchling'
+pkgname=python3-hatchling
+version=1.29.0
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-packaging python3-pathspec python3-pluggy python3-trove-classifiers"
+depends="python3 python3-packaging python3-pathspec python3-pluggy python3-trove-classifiers"
+short_desc="Modern, extensible Python build backend"
+maintainer="Maurizio Cavalletti <maurizio@akabit.it>"
+license="MIT"
+homepage="https://github.com/pypa/hatch/tree/master/backend"
+changelog="https://hatch.pypa.io/dev/history/hatchling/"
+distfiles="${PYPI_SITE}/h/hatchling/hatchling-${version}.tar.gz"
+checksum=793c31816d952cee405b83488ce001c719f325d9cda69f1fc4cd750527640ea6
+
+post_install() {
+	vlicense LICENSE.txt
+}
