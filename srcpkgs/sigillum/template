@@ -1,0 +1,35 @@
+# Template file for 'sigillum'
+pkgname=sigillum
+version=0.1.0
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-hatchling gettext"
+depends="python3
+ python3-gobject
+ python3-cryptography
+ python3-asn1crypto
+ python3-lxml
+ python3-endesive
+ python3-pykcs11
+ python3-requests
+ python3-attrs
+ python3-certifi
+ python3-fonttools
+ gtk+3
+ poppler-glib"
+short_desc="GTK app for PAdES/CAdES/XAdES digital signing (eIDAS)"
+maintainer="Maurizio Cavalletti <maurizio@akabit.it>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/piuma/sigillum"
+distfiles="https://github.com/piuma/sigillum/archive/refs/tags/v${version}.tar.gz"
+checksum=cf0be3081dc1356733ddd7f01ffd78f7f978957de8bf02a988c9d10d4fc2fea4
+
+post_install() {
+	vlicense LICENSE
+	vman docs/sigillum.1
+	for po in po/*.po; do
+		lang=$(basename "$po" .po)
+		vmkdir "usr/share/locale/${lang}/LC_MESSAGES"
+		msgfmt -o "${DESTDIR}/usr/share/locale/${lang}/LC_MESSAGES/sigillum.mo" "$po"
+	done
+}
