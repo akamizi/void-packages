@@ -1,0 +1,30 @@
+# Template file for 'python3-endesive'
+pkgname=python3-endesive
+version=2.19.3
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-setuptools"
+depends="python3
+ python3-cryptography
+ python3-asn1crypto
+ python3-lxml
+ python3-pykcs11
+ python3-Pillow
+ python3-requests
+ python3-paramiko
+ python3-certifi
+ python3-fonttools"
+short_desc="Python3 library for PDF/CMS/XML digital signatures"
+maintainer="Maurizio Cavalletti <maurizio@akabit.it>"
+license="MIT"
+homepage="https://github.com/m32/endesive"
+distfiles="https://github.com/m32/endesive/archive/refs/tags/v${version}.tar.gz"
+checksum=b4c287f0dbae34e81bb0f828551818aaab3dd6ba857feb3c484c8c9e1170adae
+wrksrc="endesive-${version}"
+
+post_install() {
+	vlicense LICENSE
+	vlicense LICENSE.pdf-annotate
+	vlicense LICENSE.pyfpdf
+	vlicense LICENSE.pypdf2
+}
