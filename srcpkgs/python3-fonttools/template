@@ -1,0 +1,19 @@
+# Template file for 'python3-fonttools'
+pkgname=python3-fonttools
+version=4.63.0
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-setuptools"
+depends="python3"
+short_desc="Library to manipulate font files from Python3"
+maintainer="Maurizio Cavalletti <maurizio@akabit.it>"
+license="MIT, OFL-1.1, BSD-3-Clause"
+homepage="https://github.com/fonttools/fonttools"
+changelog="https://raw.githubusercontent.com/fonttools/fonttools/main/NEWS.rst"
+distfiles="${PYPI_SITE}/f/fonttools/fonttools-${version}.tar.gz"
+checksum=caeb583deeb5168e694b65cda8b4ee62abedfa66cf88488734466f2366b9c4e0
+
+post_install() {
+	vlicense LICENSE
+	vlicense LICENSE.external
+}
