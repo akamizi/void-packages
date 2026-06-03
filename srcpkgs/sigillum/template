@@ -1,6 +1,6 @@
 # Template file for 'sigillum'
 pkgname=sigillum
-version=0.2.1
+version=0.2.2
 revision=1
 build_style=python3-pep517
 hostmakedepends="python3-hatchling gettext"
@@ -22,13 +22,14 @@ maintainer="Maurizio Cavalletti <maurizio@akabit.it>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/piuma/sigillum"
 distfiles="https://github.com/piuma/sigillum/archive/refs/tags/v${version}.tar.gz"
-checksum=c43fcaa8a6d64d42c31f1ef172198d462dd88cf59657b78c8e5d316f953033a7
+checksum=7ce3261f0d3fa91faf94c3067d66fce521d5c7ba0bcf15eec6c0135f8052fa5c
 
 post_install() {
 	vlicense LICENSE
 	vman docs/sigillum.1
 	vinstall packaging/flatpak/io.github.sigillum.desktop 644 usr/share/applications
 	vinstall packaging/flatpak/io.github.sigillum.svg 644 usr/share/icons/hicolor/scalable/apps
+	vinstall packaging/flatpak/io.github.sigillum.metainfo.xml 644 usr/share/metainfo
 	for po in po/*.po; do
 		lang=$(basename "$po" .po)
 		vmkdir "usr/share/locale/${lang}/LC_MESSAGES"
